@@ -1,0 +1,659 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>P02SyS20202</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-02-25"><meta name="DC.source" content="P02SyS20202.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1></h1><!--introduction--><p><img vspace="5" hspace="5" src="portada.png" alt=""> </p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Objetivos</a></li><li><a href="#2">Introduccion</a></li><li><a href="#3">Desarrollo de la practica</a></li><li><a href="#4">M1.1</a></li><li><a href="#5">M1.2</a></li><li><a href="#6">M1.3</a></li><li><a href="#7">EJERCICIO 2</a></li><li><a href="#8">EJERCICIO 3.1</a></li><li><a href="#9">EJERCICIO 3.2</a></li><li><a href="#10">EJERCICIO 3.3</a></li><li><a href="#11">EJERCICIO 4.1</a></li><li><a href="#12">EJERCICIO 4.2</a></li><li><a href="#13">EJERCICIO 4.3</a></li></ul></div><h2>Objetivos<a name="1"></a></h2><p>*Manipulaci&oacute;n b&aacute;sica de MATLAB.</p><p>*Gr&aacute;ficas de se&ntilde;ales reales y complejas continuas.</p><p>*Transformaci&oacute;n de se&ntilde;ales continuas (escalamientos y traslaciones).</p><p>*Calculo de energ&iacute;a y potencia de se&ntilde;ales continua.</p><h2>Introduccion<a name="2"></a></h2><p>Origen: MATLAB fue originalmente escrito por Cleve Moler, fundador de MathWorks Inc., con el objetivo de proporcionar un acceso f&aacute;cil al software matricial desarrollado en los proyectos de UNIX LINPACK (de LINear equations PACKage) y EISPACK (de EIgenvalue Subroutines PACKage).</p><p>Versiones e historia: La primera versi&oacute;n de MATLAB, a finales de los a&ntilde;os 70, se escribi&oacute; en FORTRAN, siendo la &uacute;nica estructura de datos la matriz. De ah&iacute; el nombre del programa, cuyas siglas corresponden a MATrix LABoratory. Posteriormente, en los a&ntilde;os 80, MATLAB fue reescrito en C. La versi&oacute;n 3 para MS-DOS es de principios de los a&ntilde;os 90. En 1993 aparece la versi&oacute;n 4, para Windows 3.11, que ya incorpora la primera versi&oacute;n del Simulink. La versi&oacute;n actual es la 7.x (las versiones m&aacute;s recientes tambi&eacute;n se identifican con el nombre del a&ntilde;o, as&iacute;, R2008a, R2008b, R2009a,&#8230;) Hoy en d&iacute;a MATLAB es un est&aacute;ndar de facto en ingenier&iacute;a y computaci&oacute;n cient&iacute;fica. Se celebran congresos monotem&aacute;ticos sobre sus aplicaciones y distintas empresas e instituciones venden sus toolboxes como third parties o bien las publican en Internet con acceso libre. Para m&aacute;s informaci&oacute;n, se sugiere entrar en el sitio www.mathworks.com.</p><h2>Desarrollo de la practica<a name="3"></a></h2><p>1. Realiza las mismas operaciones que Lathi en las secciones M1.1 a M1.4  que se encuentra al final del cap&iacute;tulo 1 y antes de la secci&oacute;n de  problemas, cambie los <i>inline</i> por funciones anonimas</p><p>2. Resuelve el problema 1.2.2 usando las herramientas del paso anterior.</p><p>3. Construya una funci&oacute;n que gr&aacute;fique funciones de IR----&gt;IR en el formato de su elecci&oacute;n y pruebe su c&oacute;digo para mostrar las gr&aacute;ficas de magnitud y fase para las f&oacute;rmulas 1, 2 y 3 de la tabla que se encuentra en al secci&oacute;n de tranformada de Fourier de la siguiente p&aacute;gina <a href="http://rafneta.github.io/Notas/NotasSyS/index.html">http://rafneta.github.io/Notas/NotasSyS/index.html</a> con valores de a=1/2 y n = 2. El rango de la varible se deja a criterio.</p><p>4. Construya una funci&oacute;n que gr&aacute;fique funciones de IR-----&gt;IR^2 en el formato de su elecci&oacute;n y pruebe su c&oacute;digo para mostrar las gr&aacute;ficas de las f&oacute;rmulas 1, 2 y 3 de la tabla que se encuentra en al secci&oacute;n de tranformada de Fourier de la siguiente p&aacute;gina <a href="http://rafneta.github.io/Notas/NotasSyS/index.html">http://rafneta.github.io/Notas/NotasSyS/index.html</a> con valores de a=1/2 y n = 2. El rango de la varible se deja a criterio.</p><p>5. Construya una app que permita</p><p>- Gr&aacute;ficar se&ntilde;ales en tiempo continuo reales, el usuario ingresa la definici&oacute;n de la se&ntilde;al en el formato especifico</p><h2>M1.1<a name="4"></a></h2><pre class="codeinput">clear; clc;
+f= @(t) exp(-t).*cos(2*pi*t);
+t=0;
+f(t);
+t=(-2:2);
+
+subplot(2,1,1)
+plot(t,f(t));
+xlabel(<span class="string">'t'</span>);ylabel(<span class="string">'f(t)'</span>);grid;
+title(<span class="string">'e^{-t}cos(2\pit)'</span>)
+
+t=(-2:0.01:2);
+subplot(2,1,2)
+plot(t,f(t));
+xlabel(<span class="string">'t'</span>); ylabel(<span class="string">'f(t)'</span>); grid;
+title(<span class="string">'e^{-t}cos(2\pit)'</span>)
+</pre><img vspace="5" hspace="5" src="P02SyS20202_01.png" alt=""> <h2>M1.2<a name="5"></a></h2><pre class="codeinput">u= @(t) (t&gt;=0);
+t=(-2:2);
+subplot(2,2,1)
+plot(t,u(t));
+xlabel(<span class="string">'t'</span>); ylabel(<span class="string">'u(t)'</span>);
+title(<span class="string">'u(t) para t=(-2:2)'</span>)
+
+t=(-2:0.01:2);
+subplot(2,2,2)
+plot(t,u(t));
+xlabel(<span class="string">'t'</span>); ylabel(<span class="string">'u(t)'</span>);
+title(<span class="string">'u(t) para t=(-2:0.01:2)'</span>);
+axis([-2 2 -0.1 1.1]);
+
+
+
+p= @(t) (t&gt;=0) &amp; (t&lt;1);
+t=(-1:0.01:2); plot(t,p(t));
+subplot(2,2,3)
+plot(t,p(t))
+axis([-1 2 -.1 1.1]);
+</pre><img vspace="5" hspace="5" src="P02SyS20202_02.png" alt=""> <h2>M1.3<a name="6"></a></h2><pre class="codeinput">g= @(t) f(t).*(t&gt;=0);
+t=(-2:0.01:2);
+subplot(2,2,1)
+plot(t,g(2*t+1))
+xlabel(<span class="string">'t'</span>);ylabel(<span class="string">'g(2t+1)'</span>);
+title(<span class="string">'g(2t + 1)'</span>)
+grid;
+
+subplot(2,2,2)
+plot(t,g(-t+1))
+xlabel(<span class="string">'t'</span>);ylabel(<span class="string">'g(-t+1)'</span>);
+title(<span class="string">'g(-t + 1)'</span>)
+grid
+
+
+subplot(2,2,3)
+plot(t,g(2*t+1)+g(-t+1));
+title(<span class="string">'g2*t +1'</span>)
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'h(t)'</span>);
+grid;
+</pre><img vspace="5" hspace="5" src="P02SyS20202_03.png" alt=""> <h2>EJERCICIO 2<a name="7"></a></h2><pre class="codeinput">u= @(t) heaviside(t);
+x= @(t) t;
+f= @(t) x(t).*(2.*u(t)-u(t+4)-u(t-2));
+t=-10:0.01:10;
+
+
+    subplot(3,2,1)
+     F=f(t);
+     plot(t,F);
+     title(<span class="string">'x(t)'</span>);
+     grid <span class="string">on</span>
+     subplot(3,2,2);
+     F=f(t-4);
+     plot(t,F);
+     title(<span class="string">'x(t-4)'</span>);
+     grid <span class="string">on</span>
+     subplot(3,2,3)
+     F=f(2*t/3);
+     plot(t,F);
+     title(<span class="string">'x(2t/3)'</span>)
+     grid <span class="string">on</span>
+      subplot(3,2,4)
+      F=f(-t);
+      plot(t,F);
+      title(<span class="string">'x(-t)'</span>)
+      grid <span class="string">on</span>
+      subplot(3,2,5)
+      F=f(2*t -4);
+      plot(t,F);
+      title(<span class="string">'x(2t-4)'</span>)
+      grid <span class="string">on</span>
+      subplot(3,2,6)
+      F=f(2-t);
+      plot(t,F);
+      title(<span class="string">'x(2-t)'</span>)
+      grid <span class="string">on</span>
+</pre><img vspace="5" hspace="5" src="P02SyS20202_04.png" alt=""> <h2>EJERCICIO 3.1<a name="8"></a></h2><pre class="codeinput">clear; clc;
+
+syms <span class="string">t</span> <span class="string">w</span>
+
+f1=exp(-0.5*t)*heaviside(t);
+F1=fourier(f1);
+
+t=-2:0.01:8;
+w=-5:0.01:5;
+
+f1sus=subs(f1);
+F1sus=subs(F1);
+
+MagF1=abs(F1sus);
+AngF1=angle(F1sus);
+
+figure
+plot(t,f1sus)
+title(<span class="string">'te^(t/2)u(t)'</span>)
+grid <span class="string">on</span>
+figure
+plot(w,MagF1)
+title(<span class="string">'Magnitud'</span>)
+grid <span class="string">on</span>
+figure
+plot(w,AngF1)
+title(<span class="string">'Fase'</span>)
+grid <span class="string">on</span>
+</pre><img vspace="5" hspace="5" src="P02SyS20202_05.png" alt=""> <img vspace="5" hspace="5" src="P02SyS20202_06.png" alt=""> <img vspace="5" hspace="5" src="P02SyS20202_07.png" alt=""> <h2>EJERCICIO 3.2<a name="9"></a></h2><pre class="codeinput">clear; clc;
+
+syms <span class="string">t</span> <span class="string">w</span>
+
+f1=t*exp(-0.5*t)*heaviside(t);
+F1=fourier(f1);
+
+t=-2:0.01:8;
+w=-5:0.01:5;
+
+f1sus=subs(f1);
+F1sus=subs(F1);
+
+MagF1=abs(F1sus);
+AngF1=angle(F1sus);
+
+figure
+plot(t,f1sus)
+title(<span class="string">'te^-t/2u(t)'</span>)
+grid <span class="string">on</span>
+figure
+plot(w,MagF1)
+title(<span class="string">'Magnitud'</span>)
+grid <span class="string">on</span>
+figure
+plot(w,AngF1)
+title(<span class="string">'Fase'</span>)
+grid <span class="string">on</span>
+</pre><img vspace="5" hspace="5" src="P02SyS20202_08.png" alt=""> <img vspace="5" hspace="5" src="P02SyS20202_09.png" alt=""> <img vspace="5" hspace="5" src="P02SyS20202_10.png" alt=""> <h2>EJERCICIO 3.3<a name="10"></a></h2><pre class="codeinput">clear; clc;
+
+syms <span class="string">t</span> <span class="string">w</span>
+
+f1=t^2*exp(-0.5*t)*heaviside(t);
+F1=fourier(f1);
+
+t=-2:0.01:8;
+w=-5:0.01:5;
+
+f1sus=subs(f1);
+F1sus=subs(F1);
+
+MagF1=abs(F1sus);
+AngF1=angle(F1sus);
+
+figure
+plot(t,f1sus)
+title(<span class="string">'t^2e(-t/2)u(t)'</span>)
+grid <span class="string">on</span>
+figure
+plot(w,MagF1)
+title(<span class="string">'Magnitud'</span>)
+grid <span class="string">on</span>
+figure
+plot(w,AngF1)
+title(<span class="string">'Fase'</span>)
+grid <span class="string">on</span>
+</pre><img vspace="5" hspace="5" src="P02SyS20202_11.png" alt=""> <img vspace="5" hspace="5" src="P02SyS20202_12.png" alt=""> <img vspace="5" hspace="5" src="P02SyS20202_13.png" alt=""> <h2>EJERCICIO 4.1<a name="11"></a></h2><pre class="codeinput">clear; clc;
+
+syms <span class="string">t</span> <span class="string">w</span>
+
+f1=exp(-0.5*t)*heaviside(t);
+F1=fourier(f1);
+
+t=-2:0.01:8;
+w=-5:0.01:5;
+
+f1sus=subs(f1);
+F1sus=subs(F1);
+
+
+figure
+plot(t,f1sus)
+grid <span class="string">on</span>
+figure
+plot3(w,real(F1sus), imag(F1sus))
+grid <span class="string">on</span>
+</pre><img vspace="5" hspace="5" src="P02SyS20202_14.png" alt=""> <img vspace="5" hspace="5" src="P02SyS20202_15.png" alt=""> <h2>EJERCICIO 4.2<a name="12"></a></h2><pre class="codeinput">clear; clc;
+
+syms <span class="string">t</span> <span class="string">w</span>
+
+f1=t*exp(-0.5*t)*heaviside(t);
+F1=fourier(f1);
+
+t=-2:0.01:8;
+w=-5:0.01:5;
+
+f1sus=subs(f1);
+F1sus=subs(F1);
+
+
+
+figure
+plot(t,f1sus)
+grid <span class="string">on</span>
+figure
+plot3(w,real(F1sus), imag(F1sus))
+grid <span class="string">on</span>
+</pre><img vspace="5" hspace="5" src="P02SyS20202_16.png" alt=""> <img vspace="5" hspace="5" src="P02SyS20202_17.png" alt=""> <h2>EJERCICIO 4.3<a name="13"></a></h2><pre class="codeinput">clear; clc;
+
+syms <span class="string">t</span> <span class="string">w</span>
+
+f1=t^2*exp(-0.5*t)*heaviside(t);
+F1=fourier(f1);
+
+t=-2:0.01:8;
+w=-5:0.01:5;
+
+f1sus=subs(f1);
+F1sus=subs(F1);
+
+MagF1=abs(F1sus);
+AngF1=angle(F1sus);
+
+figure
+plot(t,f1sus)
+grid <span class="string">on</span>
+figure
+plot3(w,real(F1sus), imag(F1sus))
+grid <span class="string">on</span>
+</pre><img vspace="5" hspace="5" src="P02SyS20202_18.png" alt=""> <img vspace="5" hspace="5" src="P02SyS20202_19.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%%
+%
+% <<portada.png>>
+%% Objetivos
+% *Manipulación básica de MATLAB.
+%
+% *Gráficas de señales reales y complejas continuas.
+%
+% *Transformación de señales continuas (escalamientos y traslaciones).
+% 
+% *Calculo de energía y potencia de señales continua.
+% 
+%% Introduccion
+% 
+% Origen: MATLAB fue originalmente escrito por Cleve Moler, fundador de MathWorks Inc.,
+% con el objetivo de proporcionar un acceso fácil al software matricial desarrollado en los
+% proyectos de UNIX LINPACK (de LINear equations PACKage) y EISPACK (de EIgenvalue
+% Subroutines PACKage). 
+%
+%
+% Versiones e historia: La primera versión de MATLAB, a finales de los años 70, se escribió
+% en FORTRAN, siendo la única estructura de datos la matriz. De ahí el nombre del programa,
+% cuyas siglas corresponden a MATrix LABoratory.
+% Posteriormente, en los años 80, MATLAB fue reescrito en C. La versión 3 para MS-DOS es
+% de principios de los años 90. En 1993 aparece la versión 4, para Windows 3.11, que ya
+% incorpora la primera versión del Simulink. La versión actual es la 7.x (las versiones más
+% recientes también se identifican con el nombre del año, así, R2008a, R2008b, R2009a,…)
+% Hoy en día MATLAB es un estándar de facto en ingeniería y computación científica. Se
+% celebran congresos monotemáticos sobre sus aplicaciones y distintas empresas e instituciones
+% venden sus toolboxes como third parties o bien las publican en Internet con acceso libre. Para
+% más información, se sugiere entrar en el sitio www.mathworks.com. 
+%
+%
+%% Desarrollo de la practica
+%
+% 1. Realiza las mismas operaciones que Lathi en las secciones M1.1 a M1.4
+%  que se encuentra al final del capítulo 1 y antes de la sección de
+%  problemas, cambie los _inline_ por funciones anonimas
+% 
+% 2. Resuelve el problema 1.2.2 usando las herramientas del paso anterior.
+% 
+% 3. Construya una función que gráfique funciones de
+% IRREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH>IR en el formato de su elección y pruebe
+% su código para mostrar las gráficas de magnitud y fase para las fórmulas 1, 2 y 3 de la 
+% tabla que se encuentra en al sección de tranformada de Fourier de la
+% siguiente página <http://rafneta.github.io/Notas/NotasSyS/index.html> con
+% valores de a=1/2 y n = 2. El rango de la varible se deja a criterio. 
+% 
+% 4. Construya una función que gráfique funciones de
+% IRREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH->IR^2 en el formato de su elección y pruebe
+% su código para mostrar las gráficas de las fórmulas 1, 2 y 3 de la 
+% tabla que se encuentra en al sección de tranformada de Fourier de la
+% siguiente página <http://rafneta.github.io/Notas/NotasSyS/index.html> con
+% valores de a=1/2 y n = 2. El rango de la varible se deja a criterio. 
+% 
+% 5. Construya una app que permita
+%
+% - Gráficar señales en tiempo continuo reales, el usuario ingresa la
+% definición de la señal en el formato especifico
+
+%% M1.1
+%
+%
+
+clear; clc;
+f= @(t) exp(-t).*cos(2*pi*t);
+t=0;
+f(t);
+t=(-2:2);
+
+subplot(2,1,1)
+plot(t,f(t));
+xlabel('t');ylabel('f(t)');grid;
+title('e^{-t}cos(2\pit)')
+
+t=(-2:0.01:2);
+subplot(2,1,2)
+plot(t,f(t));
+xlabel('t'); ylabel('f(t)'); grid;
+title('e^{-t}cos(2\pit)')
+
+
+
+
+
+
+%% M1.2
+
+u= @(t) (t>=0);
+t=(-2:2);
+subplot(2,2,1)
+plot(t,u(t));
+xlabel('t'); ylabel('u(t)');
+title('u(t) para t=(-2:2)')
+
+t=(-2:0.01:2);
+subplot(2,2,2)
+plot(t,u(t));
+xlabel('t'); ylabel('u(t)');
+title('u(t) para t=(-2:0.01:2)');
+axis([-2 2 -0.1 1.1]);
+
+
+
+p= @(t) (t>=0) & (t<1);
+t=(-1:0.01:2); plot(t,p(t));
+subplot(2,2,3)
+plot(t,p(t))
+axis([-1 2 -.1 1.1]);
+
+
+%% M1.3
+
+g= @(t) f(t).*(t>=0);
+t=(-2:0.01:2);
+subplot(2,2,1)
+plot(t,g(2*t+1))
+xlabel('t');ylabel('g(2t+1)');
+title('g(2t + 1)')
+grid;
+
+subplot(2,2,2)
+plot(t,g(-t+1))
+xlabel('t');ylabel('g(-t+1)');
+title('g(-t + 1)')
+grid
+
+
+subplot(2,2,3)
+plot(t,g(2*t+1)+g(-t+1));
+title('g2*t +1')
+xlabel('t'); 
+ylabel('h(t)'); 
+grid;
+
+
+
+
+
+%% EJERCICIO 2
+%
+u= @(t) heaviside(t);
+x= @(t) t;
+f= @(t) x(t).*(2.*u(t)-u(t+4)-u(t-2));
+t=-10:0.01:10;
+
+
+    subplot(3,2,1)
+     F=f(t); 
+     plot(t,F); 
+     title('x(t)');
+     grid on
+     subplot(3,2,2);
+     F=f(t-4); 
+     plot(t,F);
+     title('x(t-4)');
+     grid on
+     subplot(3,2,3)
+     F=f(2*t/3); 
+     plot(t,F); 
+     title('x(2t/3)')
+     grid on
+      subplot(3,2,4)  
+      F=f(-t); 
+      plot(t,F); 
+      title('x(-t)')
+      grid on
+      subplot(3,2,5)
+      F=f(2*t -4); 
+      plot(t,F); 
+      title('x(2t-4)')
+      grid on
+      subplot(3,2,6)
+      F=f(2-t); 
+      plot(t,F); 
+      title('x(2-t)')
+      grid on
+
+
+%% EJERCICIO 3.1
+clear; clc;
+
+syms t w
+
+f1=exp(-0.5*t)*heaviside(t);
+F1=fourier(f1);
+
+t=-2:0.01:8;
+w=-5:0.01:5;
+
+f1sus=subs(f1); 
+F1sus=subs(F1);
+
+MagF1=abs(F1sus);
+AngF1=angle(F1sus);
+
+figure
+plot(t,f1sus)
+title('te^(t/2)u(t)')
+grid on
+figure
+plot(w,MagF1)
+title('Magnitud')
+grid on
+figure
+plot(w,AngF1)
+title('Fase')
+grid on
+
+%% EJERCICIO 3.2
+
+clear; clc;
+
+syms t w
+
+f1=t*exp(-0.5*t)*heaviside(t);
+F1=fourier(f1);
+
+t=-2:0.01:8;
+w=-5:0.01:5;
+
+f1sus=subs(f1); 
+F1sus=subs(F1);
+
+MagF1=abs(F1sus);
+AngF1=angle(F1sus);
+
+figure
+plot(t,f1sus)
+title('te^-t/2u(t)')
+grid on
+figure
+plot(w,MagF1)
+title('Magnitud')
+grid on
+figure
+plot(w,AngF1)
+title('Fase')
+grid on
+%% EJERCICIO 3.3
+
+clear; clc;
+
+syms t w
+
+f1=t^2*exp(-0.5*t)*heaviside(t);
+F1=fourier(f1);
+
+t=-2:0.01:8;
+w=-5:0.01:5;
+
+f1sus=subs(f1); 
+F1sus=subs(F1);
+
+MagF1=abs(F1sus);
+AngF1=angle(F1sus);
+
+figure
+plot(t,f1sus)
+title('t^2e(-t/2)u(t)')
+grid on
+figure
+plot(w,MagF1)
+title('Magnitud')
+grid on
+figure
+plot(w,AngF1)
+title('Fase')
+grid on
+
+%%  EJERCICIO 4.1
+
+clear; clc;
+
+syms t w
+
+f1=exp(-0.5*t)*heaviside(t);
+F1=fourier(f1);
+
+t=-2:0.01:8;
+w=-5:0.01:5;
+
+f1sus=subs(f1); 
+F1sus=subs(F1);
+
+
+figure
+plot(t,f1sus)
+grid on
+figure
+plot3(w,real(F1sus), imag(F1sus))
+grid on
+
+%% EJERCICIO 4.2
+
+clear; clc;
+
+syms t w
+
+f1=t*exp(-0.5*t)*heaviside(t);
+F1=fourier(f1);
+
+t=-2:0.01:8;
+w=-5:0.01:5;
+
+f1sus=subs(f1); 
+F1sus=subs(F1);
+
+
+
+figure
+plot(t,f1sus)
+grid on
+figure
+plot3(w,real(F1sus), imag(F1sus))
+grid on
+%% EJERCICIO 4.3
+
+clear; clc;
+
+syms t w
+
+f1=t^2*exp(-0.5*t)*heaviside(t);
+F1=fourier(f1);
+
+t=-2:0.01:8;
+w=-5:0.01:5;
+
+f1sus=subs(f1); 
+F1sus=subs(F1);
+
+MagF1=abs(F1sus);
+AngF1=angle(F1sus);
+
+figure
+plot(t,f1sus)
+grid on
+figure
+plot3(w,real(F1sus), imag(F1sus))
+grid on
+
+
+
+
+
+
+##### SOURCE END #####
+--></body></html>
