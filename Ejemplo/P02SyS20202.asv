@@ -1,0 +1,351 @@
+%%
+%
+% <<portada.png>>
+%% Objetivos
+% *Manipulación básica de MATLAB.
+%
+% *Gráficas de señales reales y complejas continuas.
+%
+% *Transformación de señales continuas (escalamientos y traslaciones).
+% 
+% *Calculo de energía y potencia de señales continua.
+% 
+%% Introduccion
+% 
+% Origen: MATLAB fue originalmente escrito por Cleve Moler, fundador de MathWorks Inc.,
+% con el objetivo de proporcionar un acceso fácil al software matricial desarrollado en los
+% proyectos de UNIX LINPACK (de LINear equations PACKage) y EISPACK (de EIgenvalue
+% Subroutines PACKage). 
+%
+%
+% Versiones e historia: La primera versión de MATLAB, a finales de los años 70, se escribió
+% en FORTRAN, siendo la única estructura de datos la matriz. De ahí el nombre del programa,
+% cuyas siglas corresponden a MATrix LABoratory.
+% Posteriormente, en los años 80, MATLAB fue reescrito en C. La versión 3 para MS-DOS es
+% de principios de los años 90. En 1993 aparece la versión 4, para Windows 3.11, que ya
+% incorpora la primera versión del Simulink. La versión actual es la 7.x (las versiones más
+% recientes también se identifican con el nombre del año, así, R2008a, R2008b, R2009a,…)
+% Hoy en día MATLAB es un estándar de facto en ingeniería y computación científica. Se
+% celebran congresos monotemáticos sobre sus aplicaciones y distintas empresas e instituciones
+% venden sus toolboxes como third parties o bien las publican en Internet con acceso libre. Para
+% más información, se sugiere entrar en el sitio www.mathworks.com. 
+%
+%
+%% Desarrollo de la practica
+%
+% 1. Realiza las mismas operaciones que Lathi en las secciones M1.1 a M1.4
+%  que se encuentra al final del capítulo 1 y antes de la sección de
+%  problemas, cambie los _inline_ por funciones anonimas
+% 
+% 2. Resuelve el problema 1.2.2 usando las herramientas del paso anterior.
+% 
+% 3. Construya una función que gráfique funciones de
+% IR---->IR en el formato de su elección y pruebe
+% su código para mostrar las gráficas de magnitud y fase para las fórmulas 1, 2 y 3 de la 
+% tabla que se encuentra en al sección de tranformada de Fourier de la
+% siguiente página <http://rafneta.github.io/Notas/NotasSyS/index.html> con
+% valores de a=1/2 y n = 2. El rango de la varible se deja a criterio. 
+% 
+% 4. Construya una función que gráfique funciones de
+% IR----->IR^2 en el formato de su elección y pruebe
+% su código para mostrar las gráficas de las fórmulas 1, 2 y 3 de la 
+% tabla que se encuentra en al sección de tranformada de Fourier de la
+% siguiente página <http://rafneta.github.io/Notas/NotasSyS/index.html> con
+% valores de a=1/2 y n = 2. El rango de la varible se deja a criterio. 
+% 
+% 5. Construya una app que permita
+%
+% - Gráficar señales en tiempo continuo reales, el usuario ingresa la
+% definición de la señal en el formato especifico
+
+%% M1.1
+%
+%
+
+clear; clc;
+f= @(t) exp(-t).*cos(2*pi*t);
+t=0;
+f(t);
+t=(-2:2);
+
+subplot(2,1,1)
+plot(t,f(t));
+xlabel('t');ylabel('f(t)');grid;
+title('e^{-t}cos(2\pit)')
+
+t=(-2:0.01:2);
+subplot(2,1,2)
+plot(t,f(t));
+xlabel('t'); ylabel('f(t)'); grid;
+title('e^{-t}cos(2\pit)')
+
+
+
+
+
+
+%% M1.2
+
+u= @(t) (t>=0);
+t=(-2:2);
+subplot(2,2,1)
+plot(t,u(t));
+xlabel('t'); ylabel('u(t)');
+title('u(t) para t=(-2:2)')
+
+t=(-2:0.01:2);
+subplot(2,2,2)
+plot(t,u(t));
+xlabel('t'); ylabel('u(t)');
+title('u(t) para t=(-2:0.01:2)');
+axis([-2 2 -0.1 1.1]);
+
+
+
+p= @(t) (t>=0) & (t<1);
+t=(-1:0.01:2); plot(t,p(t));
+subplot(2,2,3)
+plot(t,p(t))
+axis([-1 2 -.1 1.1]);
+
+
+%% M1.3
+
+g= @(t) f(t).*(t>=0);
+t=(-2:0.01:2);
+subplot(2,2,1)
+plot(t,g(2*t+1))
+xlabel('t');ylabel('g(2t+1)');
+title('g(2t + 1)')
+grid;
+
+subplot(2,2,2)
+plot(t,g(-t+1))
+xlabel('t');ylabel('g(-t+1)');
+title('g(-t + 1)')
+grid
+
+
+subplot(2,2,3)
+plot(t,g(2*t+1)+g(-t+1));
+title('g2*t +1')
+xlabel('t'); 
+ylabel('h(t)'); 
+grid;
+
+
+%% M1.4
+
+
+%% Algunas funciones implementadas
+%
+%   help sin 
+%   help cos
+%   help exp
+%   help abs
+%   help angle
+%   help pi
+%   help plot
+%   help square
+%   help sinc
+%   help rectpuls
+%   help tripuls
+%   help sawtooth
+%   help heaviside
+%   help dirac
+%
+% Entonces si ejecutamos alguna de las intrucciones anteriores se
+% desplegara una breve descripción de la instrucción solicitada, si se
+% quiere una descripción más completa tendría que ejecutarse _doc sinc_  
+% (por ejemplo)o directamente en la ayuda.
+%
+help sinc
+
+%%
+% Como ya tenemos declarado un vecto de valores podríamos intentar con 
+%
+sinc(t1)
+%% Funciones anonimas
+% Observemos el siguiente código
+%%
+% 
+f = @(t) exp(-t).*t+exp(-t).*cos(2*t);
+u = @(t) t>=0;
+p = @(t) (t>=0) & (t<1);
+
+%% Gráficas: plot, subplot, plot3, edición con GUI, generar código de gráfica
+
+plot([1,3],[5,-4])
+
+%%
+
+figure
+plot(t1,sinc(t1))
+
+%%
+
+figure
+plot(t2,sinc(t2))
+
+%%
+
+figure
+t4=-100:0.1:100;
+plot(t4,t4.^3,'LineWidth',2)
+grid on
+ax = gca;
+ax.XAxisLocation = 'origin';
+ax.YAxisLocation = 'origin';
+ax.Box = 'off';
+title('Gráfica de la señal f(t)=t^3 ')
+
+%%
+
+figure
+t3=-100:0.1:100;
+plot3(t3,cos(t3),sin(t3),'LineWidth',2)
+grid on
+xlabel('Dominio t')
+ylabel('Re')
+zlabel('Im')
+title('Gráfica de la señal f(t)=e^{tj} ')
+
+%%
+
+figure
+subplot(2,3,1)
+plot(0:0.01:5,f(0:0.01:5))
+
+subplot(2,3,2)
+plot(t1,u(t1))
+
+subplot(2,3,5)
+plot(t2,p(t2))
+
+%%
+
+figure()
+plot(t2,u(t2))
+
+%%
+
+figure()
+plot(t1,p(t1))
+grid on
+axis([-12 10, -1, 2])
+
+%%
+
+figure()
+subplot(1,2,1)
+plot(t1,p(t1))
+grid on
+axis([-12 10, -1, 2])
+
+subplot(1,2,2)
+plot(t2,p(t2))
+grid on
+axis([-12 10, -1, 2])
+%%
+% Entonces veamos que sucede con lo siguiente
+t=-10:0.001:10;
+figure
+subplot(2,1,1)
+plot(t,p(t))
+grid on
+axis([-10, 10 -0.5 1.5]) 
+
+subplot(2,1,2)
+plot(t,p(t-2))
+grid on
+axis([-10, 10 -0.5 1.5]) 
+
+
+%% Un poco de simbólico
+%
+% Realizar las siguientes integrales
+% 
+% $$\int_a^bxe^{-x}dx,\;\;\int_0^2xe^{-x}dx,\;\;\int_0^\infty xe^{-x}dx$$
+% 
+
+syms a b  x 
+Q=int(x*exp(-x),a,b)
+subs(Q,{a,b},{0,2})
+
+%%
+% El sigueinte código produce error 
+%
+%   subs(Q,{a,b},{0,inf})
+% 
+% Pero este código no, ¿Por qué?
+
+Q=int(x*exp(-x),a,inf)
+subs(Q,a,0)
+
+close all
+
+%% Observaciones
+% Tener claro que esto no es absoluto, es una manera de implementación en 
+% MATLAB, es decir, la implementación de las señales podría variar incluso
+% en el mismo MATLAB, y por supuesto si se utiliza otro software
+%% Notas 
+% # Backgroun sección MB de Lathi
+
+%% Entregables
+% Se revisa una publicación (html) de la práctica. En este caso tendra que
+% iniciar indicando el nombre de la práctica y sus datos personales,
+% equipos de dos o tres personas
+% (Portada). El índice del contenido lo genera Publish (índice). Los
+% objetivos son los sigueintes:
+%
+% * Manipulación básica de MATLAB
+% * Gráficas de señales reales y complejas continuas 
+% * Transformación de señales continuas (escalamientos y traslaciones)
+% * Calculo de energía y potencia de señales continuas
+%
+% Como introducción investigue un poco de la historia del desarrollo de
+% MATLAB, hable un poco sobre alternativas de software libre (Octave, Python)
+% y porporcione enlaces (confiables) donde se pueda consultar información
+% para comenzar a utilizar dichas herramientas
+%
+% Para el desarrollo se tienen que resolver cada uno de los siguientes
+% problemas comenzando una nueva sección (para la publicación) en cada uno de ellos.
+%
+% # Realiza las mismas operaciones que Lathi en las secciones M1.1 a M1.4
+%  que se encuentra al final del capítulo 1 y antes de la sección de
+%  problemas, cambie los _inline_ por funciones anonimas
+% # Resuelve el problema 1.2.2 usando las herramientas del paso anterior.
+% # Construya una función que gráfique funciones de
+% $f:R\rightarrow R$ en el formato de su elección y pruebe
+% su código para mostrar las gráficas de magnitud y fase para las fórmulas 1, 2 y 3 de la 
+% tabla que se encuentra en al sección de tranformada de Fourier de la
+% siguiente página <http://rafneta.github.io/Notas/NotasSyS/index.html> con
+% valores de a=1/2 y n = 2. El rango de la varible se deja a criterio. 
+% # Construya una función que gráfique funciones de
+% $f:R\rightarrow R^2$ en el formato de su elección y pruebe
+% su código para mostrar las gráficas de las fórmulas 1, 2 y 3 de la 
+% tabla que se encuentra en al sección de tranformada de Fourier de la
+% siguiente página <http://rafneta.github.io/Notas/NotasSyS/index.html> con
+% valores de a=1/2 y n = 2. El rango de la varible se deja a criterio. 
+% # Construya una app que permita
+%
+% - Gráficar señales en tiempo continuo reales, el usuario ingresa la
+% definición de la señal en el formato especifico
+%
+% - El usuario puede definir el intervalo de la gráfica
+%
+% - El usuario puede seleccionar el tipo de transformación (horizontal,
+% vertical o combinación) que desee realizar a la señal, la app debera
+% mostrar la grafica de esta transformación. Puede consultar los 
+% ejemplos preconstruidos que le puedan ser de utilidad.  
+%
+% - Se adjunta una imagen de la app a la práctica, un enlace a la
+%  app en MATLAB online (drive), y el archivo de la app.  
+%
+% No es necesario incluir conclusiones en esta práctica, si lo considera
+% necesario puede incluir apéndices, no olvide incluir sus referencias. 
+%%
+% El código de esta publicación lo puedes encontrar en el siguiente
+% <https://www.dropbox.com/s/mjirzbpn79iy9px/p02sys20202.m?dl=0 enlace>
+
+
